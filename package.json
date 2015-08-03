@@ -1,6 +1,6 @@
 {
   "name": "nothingness",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The DAO is everything and nothing, it comes from emptiness yet fills the universe.",
   "main": "lib/dao.js",
   "scripts": {
