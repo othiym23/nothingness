@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "The DAO is everything and nothing, it comes from emptiness yet fills the universe.",
   "main": "lib/dao.js",
+  "jsnext:main": "src/dao.js",
   "scripts": {
     "example": "babel example -d te && node te/main.js && rimraf te thinger-db",
     "test": "npm run transpile && tap test/*.js",
