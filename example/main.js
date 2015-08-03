@@ -16,6 +16,6 @@ dao
         [{ type: 'band' }],
         'should only have one item, of type "band"'
       ))
-      .then(() => console.log('assert succeeded!'))
+      .then(() => console.log('round trip succeeded!'))
       .catch(err => console.error(err.stack))
   })
