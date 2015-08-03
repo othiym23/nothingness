@@ -1,0 +1,39 @@
+{
+  "name": "nothingness",
+  "version": "0.0.0",
+  "description": "The DAO is everything and nothing, it comes from emptiness yet fills the universe.",
+  "main": "lib/dao.js",
+  "scripts": {
+    "example": "babel example -d te && node te/main.js && rimraf te thinger-db",
+    "test": "npm run transpile && tap test/*.js",
+    "transpile": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/othiym23/nothingness.git"
+  },
+  "keywords": [
+    "dao",
+    "tao",
+    "data-mapper",
+    "db",
+    "tao-te-ching"
+  ],
+  "author": "Forrest L Norvell <ogd@aoaioxxysz.net>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/othiym23/nothingness/issues"
+  },
+  "homepage": "https://github.com/othiym23/nothingness#readme",
+  "devDependencies": {
+    "level": "^1.3.0",
+    "mkdirp": "^0.5.1",
+    "node-uuid": "^1.4.3",
+    "rimraf": "^2.4.2",
+    "tap": "^1.3.2"
+  },
+  "dependencies": {
+    "babel": "^5.8.20",
+    "bluebird": "^2.9.34"
+  }
+}
