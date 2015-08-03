@@ -1,6 +1,6 @@
 import ThingerDAO from './thinger-dao.js'
 import assert from 'assert'
-import Adaptor from './nothingness-level.js'
+import Adaptor from '@nothingness/level'
 
 const dao = new ThingerDAO(new Adaptor('./thinger-db'))
 const thingy = { type: 'band' }

@@ -1,7 +1,6 @@
 var inherits = require('util').inherits
 
 var join = require('path').join
-var level = require('level')
 var mkdirp = require('mkdirp')
 var rimraf = require('rimraf')
 var test = require('tap').test
@@ -10,6 +9,7 @@ var uuid = require('node-uuid').v4
 var testDBpath = join(__dirname, 'readme-example')
 var testDBfile = join(testDBpath, 'test.leveldb')
 
+var Adaptor = require('@nothingness/level')
 var DAO = require('../lib/dao.js')
 function ThingerDAO (db) {
   DAO.call(this, db)
@@ -22,27 +22,6 @@ ThingerDAO.prototype.generateID = function (pojo) {
   return id
 }
 
-// the dumbest possible leveldb adaptor
-function NothingIsLevel (path) {
-  this.db = level(path, { valueEncoding: 'json' })
-}
-
-NothingIsLevel.prototype.save = function save (key, value, cb) {
-  this.db.put(key, value, cb)
-}
-
-NothingIsLevel.prototype.findAll = function findAll (cb) {
-  var results = []
-  this.db
-    .createReadStream()
-    .on('data', function (entry) {
-      entry.value[DAO.idSymbol] = entry.key
-      results.push(entry.value)
-    })
-    .on('end', function () { cb(null, results) })
-    .on('error', cb)
-}
-
 test('setup', function (t) {
   setup()
   t.end()
@@ -51,7 +30,7 @@ test('setup', function (t) {
 test('simple example from the README', function (t) {
   t.plan(1)
 
-  var dao = new ThingerDAO(new NothingIsLevel(testDBfile))
+  var dao = new ThingerDAO(new Adaptor(testDBfile))
   var thingy = {
     type: 'band'
   }
