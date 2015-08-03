@@ -1,6 +1,6 @@
 {
   "name": "nothingness",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The DAO is everything and nothing, it comes from emptiness yet fills the universe.",
   "main": "lib/dao.js",
   "jsnext:main": "src/dao.js",
