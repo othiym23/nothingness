@@ -8,6 +8,9 @@ export default class DAO {
 
   save (pojo, cb) {
     if (!pojo[DAO.idSymbol]) this.generateID(pojo)
+    if (!pojo[DAO.idSymbol]) {
+      throw new Error('generateID did not mutate the to-be-serialized object with DAO.idSymbol!')
+    }
 
     return this._save(pojo[DAO.idSymbol], pojo).nodeify(cb)
   }
