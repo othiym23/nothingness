@@ -1,9 +1,9 @@
-import Promise from 'bluebird'
+import Bluebird from 'bluebird'
 
 export default class DAO {
   constructor (adaptor) {
-    this._save = Promise.promisify(adaptor.save, adaptor)
-    this._findAll = Promise.promisify(adaptor.findAll, adaptor)
+    this._save = Bluebird.promisify(adaptor.save, { context: adaptor })
+    this._findAll = Bluebird.promisify(adaptor.findAll, { context: adaptor })
   }
 
   save (pojo, cb) {

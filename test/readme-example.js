@@ -9,8 +9,8 @@ var uuid = require('node-uuid').v4
 var testDBpath = join(__dirname, 'readme-example')
 var testDBfile = join(testDBpath, 'test.leveldb')
 
-var Adaptor = require('@nothingness/level')
-var DAO = require('../lib/dao.js')
+var Adaptor = require('@nothingness/level').default
+var DAO = require('../lib/dao.js').default
 function ThingerDAO (db) {
   DAO.call(this, db)
 }
@@ -31,6 +31,7 @@ test('simple example from the README', function (t) {
   t.plan(1)
 
   var dao = new ThingerDAO(new Adaptor(testDBfile))
+  console.error('dao', dao)
   var thingy = {
     type: 'band'
   }
