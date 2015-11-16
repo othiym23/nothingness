@@ -31,7 +31,6 @@ test('simple example from the README', function (t) {
   t.plan(1)
 
   var dao = new ThingerDAO(new Adaptor(testDBfile))
-  console.error('dao', dao)
   var thingy = {
     type: 'band'
   }
