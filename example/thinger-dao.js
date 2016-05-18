@@ -3,10 +3,6 @@ import DAO from '..'
 import { v4 as uuid } from 'node-uuid'
 
 export default class ThingerDAO extends DAO {
-  constructor (db) {
-    super(db)
-  }
-
   generateID (pojo) {
     // the #yolo uniqueness constraint
     const id = uuid()
