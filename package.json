@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/othiym23/nothingness#readme",
   "devDependencies": {
-    "@nothingness/level": "0.0.4",
+    "@nothingness/level": "^0.1.1",
     "babel-cli": "^6.9.0",
     "babel-preset-es2015": "^6.9.0",
     "mkdirp": "^0.5.1",

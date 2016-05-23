@@ -29,7 +29,8 @@ ThingerDAO.prototype.generateID = function (pojo) {
 test('setup', setup)
 
 test('simple example from the README', function (t) {
-  var dao = new ThingerDAO(new Adaptor(PLAYGROUND))
+  // must pass in DAO.idSymbol to resolve circular dependency
+  var dao = new ThingerDAO(new Adaptor(PLAYGROUND, DAO.idSymbol))
   var thingy = {
     type: 'band'
   }

@@ -48,4 +48,4 @@ export default class DAO {
   }
 }
 
-DAO.idSymbol = Symbol('DAO')
+DAO.idSymbol = Symbol()
