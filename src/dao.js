@@ -1,3 +1,5 @@
+import assert from 'assert'
+
 import Bluebird from 'bluebird'
 
 export default class DAO {
@@ -8,20 +10,37 @@ export default class DAO {
   }
 
   save (pojo, cb) {
-    if (!pojo[DAO.idSymbol]) this.generateID(pojo)
-    if (!pojo[DAO.idSymbol]) {
-      throw new Error('generateID did not mutate the to-be-serialized object with DAO.idSymbol!')
-    }
+    return this._serialize(pojo)
+      .then(serialized => {
+        assert(
+          serialized[DAO.idSymbol],
+          'object to be saved must have an ID set'
+        )
 
-    return this._save(pojo[DAO.idSymbol], pojo).nodeify(cb)
+        return this._save(serialized[DAO.idSymbol], serialized)
+      })
+      .nodeify(cb)
   }
 
   findAll (cb) {
-    return this._findAll().nodeify(cb)
+    return this._findAll()
+      .map(v => this._deserialize(v))
+      .nodeify(cb)
   }
 
   closeDB (cb) {
     return this._closeDB().nodeify(cb)
+  }
+
+  // serialization may require async actions
+  _serialize (toSave, cb) {
+    if (!toSave[DAO.idSymbol]) this.generateID(toSave)
+    return Bluebird.resolve(toSave).nodeify(cb)
+  }
+
+  _deserialize (loaded, cb) {
+    assert(loaded[DAO.idSymbol], 'adaptor must set ID for each loaded object')
+    return Bluebird.resolve(loaded).nodeify(cb)
   }
 
   generateID () {
@@ -29,4 +48,4 @@ export default class DAO {
   }
 }
 
-DAO.idSymbol = Symbol()
+DAO.idSymbol = Symbol('DAO')

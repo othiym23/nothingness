@@ -48,6 +48,7 @@ dao.save(thingy)
    ))
    .then(() => console.log('round trip succeeded!'))
    .catch(err => console.error(err.stack))
+   .finally(() => dao.closeDB())
 ```
 
 ## caveats
