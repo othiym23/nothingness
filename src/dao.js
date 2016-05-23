@@ -4,6 +4,7 @@ export default class DAO {
   constructor (adaptor) {
     this._save = Bluebird.promisify(adaptor.save, { context: adaptor })
     this._findAll = Bluebird.promisify(adaptor.findAll, { context: adaptor })
+    this._closeDB = Bluebird.promisify(adaptor.closeDB, { context: adaptor })
   }
 
   save (pojo, cb) {
@@ -17,6 +18,10 @@ export default class DAO {
 
   findAll (cb) {
     return this._findAll().nodeify(cb)
+  }
+
+  closeDB (cb) {
+    return this._closeDB().nodeify(cb)
   }
 
   generateID () {
