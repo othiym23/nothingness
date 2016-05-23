@@ -1,1 +1,3 @@
 # don't want to ignore lib/ for packaging purposes
+.nyc_output/
+coverage/
