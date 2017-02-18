@@ -33,7 +33,7 @@
     "babel-preset-es2015": "^6.9.0",
     "mkdirp": "^0.5.1",
     "node-uuid": "^1.4.7",
-    "rimraf": "^2.5.2",
+    "rimraf": "^2.6.0",
     "standard": "^7.1.0",
     "tap": "^5.7.1"
   },
