@@ -30,7 +30,7 @@
   "devDependencies": {
     "@nothingness/level": "^0.1.1",
     "babel-cli": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015": "^6.24.0",
     "mkdirp": "^0.5.1",
     "node-uuid": "^1.4.7",
     "rimraf": "^2.5.2",
